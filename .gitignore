@@ -1,0 +1,3 @@
+docker/.vagrant
+harbor/.vagrant
+harbor/data/harbor-offline-installer-v2.0.2.tgz

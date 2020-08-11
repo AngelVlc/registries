@@ -1,0 +1,37 @@
+version: 0.1
+# log:
+#   fields:
+#     service: registry
+proxy:
+  remoteurl: https://registry-1.docker.io
+storage:
+  # cache:
+  #   blobdescriptor: inmemory
+  # filesystem:
+  #   rootdirectory: /var/lib/registry
+  s3:
+    accesskey: an_user
+    secretkey: a_password
+    region: us-west-1
+    regionendpoint: http://192.168.1.121:9000
+    bucket: registry-bucket
+    # encrypt: true
+    # keyid: mykeyid
+    # secure: true
+    # v4auth: true
+    chunksize: 5242880
+    multipartcopychunksize: 33554432
+    multipartcopymaxconcurrency: 100
+    multipartcopythresholdsize: 33554432
+    # rootdirectory: /s3/object/name/prefix
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+auth:
+  none:
+# health:
+#   storagedriver:
+#     enabled: true
+#     interval: 10s
+#     threshold: 3

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  registry:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - ./config.yml:/etc/docker/registry/config.yml
+    depends_on:
+      - minio
+
+  minio:
+    image: minio/minio
+    environment:
+      MINIO_ACCESS_KEY: an_user
+      MINIO_SECRET_KEY: a_password
+    command: server /data
+    ports:
+      - "9000:9000"
